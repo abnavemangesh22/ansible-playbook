@@ -1,0 +1,17 @@
+- name: This is play book for testing when condition
+  hosts: Redhat
+  tasks:
+   - name: This is task to check the service
+     command: systemctl status httpd
+     register: command_output
+
+   - name: This is to notify you
+     mail:
+       host: smtp.gmail.com
+       port: 587
+       username: mangeshabnave4558@gmail.com
+       password: 123@Samruddh@
+       to: mangesh <abnavemangesh777@gmail.com>
+       subject: This is an alert
+       secure: starttls
+     when: command_output.stdout.find('active')

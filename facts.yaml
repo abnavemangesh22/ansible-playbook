@@ -1,0 +1,7 @@
+---
+ - name: The task for using the facts
+   hosts: all
+   tasks:
+     - name: show details
+       debug:
+          msg: "{{ ansible_hostname }} {{ ansible_default_ipv4['address'] }} {{ ansible_distribution }}"

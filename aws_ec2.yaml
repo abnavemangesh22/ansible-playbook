@@ -5,6 +5,5 @@ hostnames:
   - ip-address
 groups:
   Redhat: "'redhat' in tags.ostype"
-  Ubuntu: "'ubuntu' in tags.ostype" 
   Myubuntu: "'testos' in tags.ostype"
-  myprepod: "'test-my-os' in tags.ostype"
+  Ubuntu: "'test-my-os' in tags.ostype"

@@ -1,0 +1,9 @@
+---
+ - name: this is simple conditional statement
+   hosts: Redhat
+   vars:
+     age: 18
+   tasks:
+     - name: This is my tasks
+       command: touch /tmp/myage-18.txt
+       when: age == 18
