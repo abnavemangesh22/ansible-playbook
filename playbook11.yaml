@@ -1,0 +1,8 @@
+---
+ - name: This is the demo for facts
+   hosts: Redhat
+   gather_facts: false
+   tasks:
+     - name: This is message
+       debug:
+         msg: "This is hello message" 

@@ -1,0 +1,10 @@
+---
+ - name: Handler Demo
+   hosts: Redhat
+   tasks:
+     - name: My tasks are dependet on the handler
+       yum: name=httpd state=latest
+       notify: Change the content
+   handlers:
+     - name: Change the content
+       copy: dest=/var/www/html/index.html content="This is content given by handlers"
