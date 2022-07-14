@@ -1,0 +1,8 @@
+---
+ - name: This is something called as handler
+   hosts: Redhat
+   tasks:
+     - name: Creating the webapplication server in my datacenter
+       yum: name=nginx state=latest
+     - name: Installation of the tree
+       yum: name=tree state=latest 

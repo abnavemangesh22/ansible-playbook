@@ -1,0 +1,12 @@
+---
+ - name: This is usercreation on Redhat Servers
+   hosts: Redhat
+   tasks:
+     - name: User creation
+       tags:
+         - package
+       user: 
+         name: myadmin3
+         state: present
+         uid: 5004
+         group: root

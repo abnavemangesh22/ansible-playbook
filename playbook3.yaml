@@ -1,0 +1,32 @@
+---
+ - name: Enable Intranet Service
+   hosts: Ubuntu
+   become: yes
+   tasks:
+     - name: Install httpd and firewalld on the machine
+       yum:
+        name:
+          - httpd
+          - firewalld
+        state: latest
+     - name: Enable and Run firewalld Service
+       service:
+         name: firewalld
+         enabled: true
+         state: started
+     - name: firewalld should on the port for httpd service
+       firewalld:
+         service: http
+         permanent: yes
+         state: enabled
+         immediate: yes
+     - name: httpd service should be enabled and started
+       service:
+         name: httpd
+         enabled: true
+         state: started
+     - name: Test html pages should be deployed
+       copy:
+         content: "Welcome to the Mangesh.com!\n"
+         dest: /var/www/html/index.html
+

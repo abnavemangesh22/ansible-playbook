@@ -1,0 +1,34 @@
+---
+ - name: Enable Intranet Service
+   hosts: Ubuntu
+   become: yes
+   vars_files:
+     - vars.yaml
+   tasks:
+     - name: Install "{{ myweb }}" and "{{ myfire }}" on the machine
+       yum:
+        name:
+          - "{{ myweb }}"
+          - "{{ myfire }}"
+        state: latest
+     - name: Enable and Run "{{ myfire }}" Service
+       service:
+         name: "{{ myfire }}"
+         enabled: true
+         state: started
+     - name: This "{{ myfire }}" should on the port for httpd service
+       firewalld:
+         service: "{{ myweb1 }}"
+         permanent: yes
+         state: enabled
+         immediate: yes
+     - name: This "{{ myweb }}" service should be enabled and started
+       service:
+         name: "{{ myweb }}"
+         enabled: true
+         state: started
+     - name: Test html pages should be deployed
+       copy:
+         content: "Welcome to the Mangesh.com!\n"
+         dest: /var/www/html/index.html
+

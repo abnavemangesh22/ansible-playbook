@@ -1,0 +1,8 @@
+---
+ - name: Line in the file
+   hosts: all
+   tasks:
+     - name: Additional parameters should be added
+       shell: echo "8.8.8.8" | tee -a /tmp/resolv.conf
+     - name: File creation
+       shell: touch "/tmp/{{ mysample }}"

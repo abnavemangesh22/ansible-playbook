@@ -1,0 +1,19 @@
+---
+ - name: Installation of the web package
+   hosts: Redhat
+   tasks:
+     - name: Installation of the web-server with the help of yum
+       yum:
+         name: httpd
+         state: latest
+       register: yum_ouput
+       ignore_errors: yes
+     - name: Printing the output of the yum
+       debug:
+         msg: "{{ yum_ouput }}" 
+     - name: Printing the error
+       debug:
+         msg: "This is failed"
+       when: yum_ouput.failed == true
+   
+

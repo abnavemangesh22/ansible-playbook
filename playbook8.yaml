@@ -1,0 +1,10 @@
+---
+ - name: create user from array variable
+   hosts: Redhat
+   vars_files:
+      - array_vars.yaml
+   tasks:
+     - name: I just want to debug
+       debug: 
+         #msg: "{{ users['mangesh']['firstname'] }}"
+         msg: "{{ users.mangesh.firstname }}"

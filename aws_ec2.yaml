@@ -1,0 +1,10 @@
+plugin: aws_ec2
+regions:
+  - ap-south-1
+hostnames:
+  - ip-address
+groups:
+  Redhat: "'redhat' in tags.ostype"
+  Ubuntu: "'ubuntu' in tags.ostype" 
+  Myubuntu: "'testos' in tags.ostype"
+  myprepod: "'test-my-os' in tags.ostype"
