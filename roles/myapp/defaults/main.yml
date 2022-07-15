@@ -1,0 +1,5 @@
+---
+web_package: httpd
+web_service: http
+fire_package: firewalld
+# defaults file for myapp

@@ -1,0 +1,25 @@
+---
+ - name: Demo for Error handling concepts in ansible
+   hosts: Redhat
+   tasks:
+     - block: 
+        - name: Configuration file for task1
+          command: ls -l /tmp/mangesh1
+          register: task1
+      
+        - name: Configuration file for task2
+          command: ls -l /tmp/mangesh2
+          register: task2
+     
+        - name: Configuration file for task3
+          command: ls -l /tmp/mangesh3
+          register: task3
+       rescue:
+         - name: This is my rescue block
+           debug:
+             msg: "This is my rescue block-----Running"
+       always:
+         - name: This is my always tasks
+           debug:
+             msg: "This is always block ----Running"
+

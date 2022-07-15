@@ -1,0 +1,37 @@
+---
+ - name: Install "{{ web_package }}"  and "{{ fire_package }}"  on the machine
+   yum: 
+    name:
+       - "{{ web_package }}"
+       - "{{ fire_package }}"
+    state: latest
+   notify: Installation is Done
+     
+ - name: Enable and Run "{{ fire_package }}"  Service
+   service:
+      name: "{{ fire_package }}" 
+      enabled: true
+      state: started
+
+ - name: my "{{ fire_package }}"  should on the port for "{{ web_package }}" service
+   firewalld:
+      service: "{{ web_service }}"
+      permanent: yes
+      state: enabled
+      immediate: yes
+
+ - name: My "{{ web_package }}" service should be enabled and started
+   service:
+      name: "{{ web_package }}"
+      enabled: true
+      state: started
+
+ - name: Test html pages should be deployed
+   copy:
+      content: "Welcome to the Mangesh.com!\n"
+      dest: /var/www/html/index.html
+ 
+ - name: Running the script
+   script: testscript.sh Mangesh
+
+# tasks file for myapp

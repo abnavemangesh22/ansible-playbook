@@ -1,0 +1,21 @@
+---
+ - name: Demo for Error handling concepts in ansible
+   hosts: Redhat
+   tasks:
+     - name: Configuration file for task1
+       command: ls -l /tmp/mangesh1
+       register: task1
+      
+     - name: Configuration file for task2
+       command: ls -l /tmp/mangesh2
+       register: task2
+       ignore_errors: yes
+     
+     - name: Configuration file for task3
+       command: ls -l /tmp/mangesh3
+       register: task3
+       
+     - debug: var=task1
+     - debug: var=task2
+
+

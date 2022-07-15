@@ -1,0 +1,4 @@
+---
+ - name: Installation is Done
+   command: "touch /tmp/{{ web_package }}.conf" 
+# handlers file for myapp
