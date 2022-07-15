@@ -1,0 +1,8 @@
+---
+ - name: demo for Jinja Template
+   hosts: Redhat
+   tasks:
+     - name: Deploy the motd as per template
+       template:
+         dest: /etc/motd
+         src: motd.j2

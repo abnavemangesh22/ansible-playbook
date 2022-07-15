@@ -1,6 +1,7 @@
 ---
  - name: Installation of Web-Server
    hosts: Redhat
+   serial: 3
    roles:
     - role: myapp
     - role: geerlingguy.git
