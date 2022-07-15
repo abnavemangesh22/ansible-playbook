@@ -1,0 +1,9 @@
+---
+ - name: This is my very simple conditional playbook
+   hosts: Redhat
+   vars:
+     age: 18
+   tasks:
+     - name: This is the shell task
+       shell: touch /tmp/myagefile.txt
+       when: age == 18

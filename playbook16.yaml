@@ -1,0 +1,7 @@
+---
+ - name: My facts playbook
+   hosts: all
+   tasks:
+     - name: This is gathering tasks
+       debug:
+         msg: "{{ ansible_local['web']['business'] }}"

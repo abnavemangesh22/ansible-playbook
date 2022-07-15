@@ -1,0 +1,14 @@
+---
+ - name: This is another way to utilize
+   hosts: Redhat
+   vars:
+     pkg:
+       - vsftpd
+       - tree
+       - git
+   tasks:
+     - name: This is installation tasks
+       yum:
+         name: "{{ item }}"
+         state: present
+       with_items: "{{ pkg }}" 

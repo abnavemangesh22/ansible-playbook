@@ -1,0 +1,8 @@
+---
+ - name: This is the localshell
+   hosts: Ubuntu
+   vars:
+     local_shell: "{{ lookup('env','HOSTNAME') }}"
+   tasks:
+     - debug:
+        msg: "{{ local_shell }}"

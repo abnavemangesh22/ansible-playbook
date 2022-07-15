@@ -1,0 +1,15 @@
+---
+ - name: This is my conditional and ansible facts playbook
+   hosts: all
+   become: yes
+   tasks:
+     - name: install apache package (apt-get)
+       when: ansible_distribution == "Ubuntu"
+       package:
+         name: apache2
+         state: present
+     - name: install httpd package (yum)
+       when: ansible_distribution == "Amazon"
+       package:
+         name: httpd
+         state: present
